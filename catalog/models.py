@@ -11,7 +11,7 @@ class Genre(models.Model): # inherits properties from the Model class
     def __str__(self):
         """String representing the Model object."""
         return self.name
-
+        
 
 class Book(models.Model):
     """Model representing a book (but not the specific copy of a book)"""
@@ -40,6 +40,15 @@ class Book(models.Model):
         return reverse('book-detail', args=[str(self.id)])
 
 
+# Implement the Language model
+class Language(models.Model):
+    """Model representing the book's language"""
+    name = models.CharField(max_length=200, help_text="Enter the book's language")
+
+    def __str__(self):
+        return self.name
+
+
 class BookInstance(models.Model):
     """Model representing a specific COPY of a book"""
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="Unique ID for this particular book at the library.")
@@ -63,10 +72,8 @@ class BookInstance(models.Model):
         help_text='Book availability'
     )
 
-    
     class Meta:
         ordering = ['due_back']
-
 
     def __str__(self):
         return f'{self.id} ({self.book.title})'
@@ -76,7 +83,7 @@ class Author(models.Model):
     """Model representing an actor."""
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    date_of_birth = models.DateField(null=True, blank=True)
+    date_of_birth = models.DateField('Born', null=True, blank=True)
     date_of_death = models.DateField('Died', null=True, blank=True)
 
 
@@ -91,12 +98,3 @@ class Author(models.Model):
 
     def __str__(self):
         return f'{self.last_name}, {self.first_name}'
-
-
-# Implement the Language model
-class Language(models.Model):
-    """Model representing the book's language"""
-    name = models.CharField(max_length=200, help_text="Enter the book's language")
-
-    def __str__(self):
-        return self.name
