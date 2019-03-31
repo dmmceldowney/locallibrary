@@ -39,6 +39,13 @@ class Book(models.Model):
         """Returns the url to access a detail record for this book"""
         return reverse('book-detail', args=[str(self.id)])
 
+    
+    def display_genre(self):
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+
+    
+    display_genre.short_description = 'Genre'
+
 
 # Implement the Language model
 class Language(models.Model):
