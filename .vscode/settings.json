@@ -1,5 +1,7 @@
 {
     "python.linting.pylintEnabled": false,
     "python.linting.enabled": false,
-    "python.linting.lintOnSave": false
+    "python.linting.lintOnSave": false,
+    "git.ignoreLimitWarning": true,
+    "python.pythonPath": "venv/bin/python"
 }
