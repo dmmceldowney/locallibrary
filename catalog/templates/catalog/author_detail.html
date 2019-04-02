@@ -1,0 +1,21 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}{{ object.first_name }} {{ object.last_name }}{% endblock %}
+
+{% block content %}
+{% if author %}
+    <h1>{{ author.first_name }} {{ author.last_name }}</h1>
+    <p>{{ author.date_of_birth }} - {{ author.date_of_death }}</p>
+    <!-- show all books by author -->
+    {% for book in author.book_set.all %}
+    <hr>
+    <p><strong><a href="{{ book.get_absolute_url }}">{{ book }}</a></strong></p>
+    <p>{{ book.summary }}</p>
+    <p>(<strong>{{ book.copy_count }}</strong>{% if book.copy_count == 1 %} copy {% else %} copies {% endif %}on file)</p>
+
+    {% endfor %}
+{% else %}
+    <p>No author data found</p>
+{% endif %}
+{% endblock %}
+

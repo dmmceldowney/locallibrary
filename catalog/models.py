@@ -43,6 +43,10 @@ class Book(models.Model):
     def display_genre(self):
         return ', '.join(genre.name for genre in self.genre.all()[:3])
 
+
+    def copy_count(self):
+        return len(BookInstance.objects.filter(book=self.id))
+
     
     display_genre.short_description = 'Genre'
 
