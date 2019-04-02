@@ -3,5 +3,12 @@
     "python.linting.enabled": false,
     "python.linting.lintOnSave": false,
     "git.ignoreLimitWarning": true,
-    "python.pythonPath": "venv/bin/python"
+    "python.pythonPath": "venv/bin/python",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "emmet.includeLanguages": {"django-html": "html"},
 }
