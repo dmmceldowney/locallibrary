@@ -22,6 +22,8 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.contrib.auth import urls as auth_urls
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
@@ -34,3 +36,10 @@ urlpatterns += [
 
 # add static files (DEV ONLY)
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+# Add Django authentication urls for login, logout, passwd management
+urlpatterns += [
+    path('accounts/', include(auth_urls)),
+]
+
+
