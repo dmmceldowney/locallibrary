@@ -119,3 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# redirect to home URL after login (default redirects to '/accounts/profile/')
+LOGIN_REDIRECT_URL = '/'
+
+
+
